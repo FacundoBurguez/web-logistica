@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Consultas recibidas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">📥 Consultas recibidas</h2>
+
+    <div class="mb-3 text-end">
+      <a href="{{ url_for('exportar_consultas') }}" class="btn btn-success btn-sm">⬇️ Exportar a Excel</a>
+      <a href="{{ url_for('logout') }}" class="btn btn-outline-danger btn-sm">Cerrar sesión</a>
+    </div>
+
+    <table class="table table-bordered table-hover bg-white">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Mensaje</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for consulta in consultas %}
+        <tr>
+          <td>{{ consulta[0] }}</td>
+          <td>{{ consulta[1] }}</td>
+          <td>{{ consulta[2] }}</td>
+          <td>{{ consulta[3] }}</td>
+          <td>{{ consulta[4] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+      <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">← Volver al sitio</a>
+    </div>
+  </div>
+</body>
+</html>
+
